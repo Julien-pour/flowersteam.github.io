@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 400 85" fill="none">
+  <!-- Flower icon -->
+  <g transform="translate(25, 35)">
+    <!-- Petals - main flower -->
+    <g fill="#c47d2e" opacity="0.9">
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" />
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" transform="rotate(60)" />
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" transform="rotate(120)" />
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" transform="rotate(180)" />
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" transform="rotate(240)" />
+      <ellipse cx="0" cy="-18" rx="5.5" ry="14" transform="rotate(300)" />
+    </g>
+    <circle cx="0" cy="0" r="5" fill="#4a7c6f" />
+  </g>
+  <!-- Title text -->
+  <text x="55" y="38" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="30" fill="#2d2d3a" letter-spacing="-0.5">Developmental Systems</text>
+  <!-- Subtitle -->
+  <text x="57" y="56" font-family="'Outfit', sans-serif" font-weight="400" font-size="11" fill="#6b6b80" letter-spacing="0.3">Flowers team blog: developmental AI and cognitive sciences</text>
+  <!-- Accent line -->
+  <line x1="57" y1="66" x2="117" y2="66" stroke="#c47d2e" stroke-width="2" stroke-linecap="round" opacity="0.35" />
+</svg>

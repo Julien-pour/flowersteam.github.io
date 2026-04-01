@@ -1,16 +1,33 @@
 <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
-      <div class="measure">
-          <a href="{{ "/" | relative_url }}" class="site-title">
-              <img src="/flowers-logo.png">
-          </a>
-      <nav class="site-nav">
-        {% include navigation.html %}
-      </nav>
-      <div class="clearfix"></div>
-      {% if site.show_social_icons %}
-        {% include social_links.html %}
-      {% endif %}
+    <div class="measure header-inner">
+      <a href="{{ "/" | relative_url }}" class="site-title">
+        <img src="/flowers-logo.svg" alt="Flowers Lab - Developmental Systems">
+      </a>
+      <div class="header-right">
+        <nav class="site-nav">
+          {% include navigation.html %}
+        </nav>
+        <div class="header-actions">
+          <button class="search-toggle" id="searchToggle" aria-label="Search">
+            <i class="fa fa-search"></i>
+          </button>
+          {% if site.show_social_icons %}
+          <div class="header-social">
+            {% if site.github_username %}
+              <a class="fa fa-github" href="https://github.com/{{ site.github_username }}" title="GitHub"></a>
+            {% endif %}
+            <a class="fa fa-rss" href="{{ "/feed.xml" | relative_url }}" title="RSS"></a>
+            {% if site.twitter_username %}
+              <a class="fa fa-twitter" href="https://twitter.com/{{ site.twitter_username }}" title="Twitter"></a>
+            {% endif %}
+            {% if site.email %}
+              <a class="fa fa-envelope" href="mailto:{{ site.email }}" title="Email"></a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 </header>

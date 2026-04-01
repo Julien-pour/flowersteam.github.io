@@ -12,27 +12,9 @@
     text-align: left;
   }
 
-  .site-nav {
-    margin-top: 0;
-  }
-
-  .site-header a {
-    font-size: $h4;
-  }
-
-  .site-header .site-title {
-    font-size: $h3;
-    float: left;
-  }
-
-  .site-header .site-nav {
-    float: right;
-    margin-top: .25rem;
-  }
-
   blockquote {
     margin-left: $space-3;
-    padding: $space-3;
+    padding: 1.25rem 2rem;
   }
 
   .social-icons-left {
@@ -52,7 +34,7 @@
 
 @media screen and (min-width: $viewport-large) {
   html {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 

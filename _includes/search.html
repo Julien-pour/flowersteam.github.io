@@ -1,0 +1,113 @@
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-container">
+    <div class="search-input-wrap">
+      <i class="fa fa-search search-input-icon"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search articles..." autocomplete="off" />
+      <button class="search-close" id="searchClose" aria-label="Close search">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var searchData = null;
+  var overlay = document.getElementById('searchOverlay');
+  var input = document.getElementById('searchInput');
+  var results = document.getElementById('searchResults');
+  var closeBtn = document.getElementById('searchClose');
+  var toggleBtn = document.getElementById('searchToggle');
+
+  // Load search index
+  function loadSearchData() {
+    if (searchData) return;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '{{ "/search.json" | relative_url }}');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        searchData = JSON.parse(xhr.responseText);
+      }
+    };
+    xhr.send();
+  }
+
+  function openSearch() {
+    overlay.classList.add('active');
+    input.value = '';
+    results.innerHTML = '';
+    setTimeout(function() { input.focus(); }, 100);
+    document.body.style.overflow = 'hidden';
+    loadSearchData();
+  }
+
+  function closeSearch() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function search(query) {
+    if (!searchData || !query.trim()) {
+      results.innerHTML = '';
+      return;
+    }
+
+    var q = query.toLowerCase().trim();
+    var matches = searchData.filter(function(post) {
+      return post.title.toLowerCase().indexOf(q) !== -1 ||
+             post.summary.toLowerCase().indexOf(q) !== -1 ||
+             post.authors.toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (matches.length === 0) {
+      results.innerHTML = '<div class="search-empty">No results for &ldquo;' +
+        query.replace(/</g, '&lt;') + '&rdquo;</div>';
+      return;
+    }
+
+    var html = '';
+    matches.forEach(function(post) {
+      html += '<a href="' + post.url + '" class="search-result">' +
+        '<div class="search-result-title">' + post.title + '</div>' +
+        '<div class="search-result-meta">' + post.authors + ' &middot; ' + post.date + '</div>' +
+        '</a>';
+    });
+    results.innerHTML = html;
+  }
+
+  // Events
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openSearch();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSearch);
+  }
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeSearch();
+  });
+
+  input.addEventListener('input', function() {
+    search(this.value);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSearch();
+    // Cmd/Ctrl+K to open search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+
+  // Preload on hover
+  if (toggleBtn) {
+    toggleBtn.addEventListener('mouseenter', loadSearchData);
+  }
+})();
+</script>

@@ -1,18 +1,16 @@
 // Typography
-$base-font-size: 20px !default;
-$bold-font-weight: 300 !default;
-//$font-family: 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif !default;
-$font-family: 'Roboto', Roboto, sans-serif !default;
-$line-height: 2 !default;
-$heading-font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif !default;
-$heading-font-weight: 900 !default;
-$heading-line-height: 1.25 !default;
-//$monospace-font-family: 'Source Code Pro', Consolas, monospace !default;
-$monospace-font-family: 'Roboto Mono', Roboto, monospace !default;
-$h1: 2.998rem !default;
-$h2: 1.5rem !default;
-$h3: 1.25rem !default;
-$h4: 1rem !default;
+$base-font-size: 19px !default;
+$bold-font-weight: 400 !default;
+$font-family: 'Outfit', sans-serif !default;
+$line-height: 1.7 !default;
+$heading-font-family: 'Fraunces', Georgia, serif !default;
+$heading-font-weight: 700 !default;
+$heading-line-height: 1.2 !default;
+$monospace-font-family: 'JetBrains Mono', 'Fira Code', monospace !default;
+$h1: 2.5rem !default;
+$h2: 1.6rem !default;
+$h3: 1.3rem !default;
+$h4: 1.05rem !default;
 $h5: .875rem !default;
 $h6: .75rem !default;
 $h00: 4rem !default;
@@ -26,29 +24,39 @@ $h1-responsive-max: 3.84rem !default;
 $abbr-border-bottom: 1px black dotted;
 
 // Page width
-$measure-width: 42rem !default;
+$measure-width: 44rem !default;
 
 // Viewport widths
 $viewport-small: 32em;
 $viewport-medium: 48em;
 $viewport-large: 64em;
 
-// Colors
-$blue: #0076df !default;
-$flowers-blue: #5597f6;
-$red: #f95020 !default;
-$green: #00cf26 !default;
+// Botanical Scientific palette
+$amber: #c47d2e;
+$amber-light: #e8a838;
+$amber-dark: #8b5e3c;
+$sage: #4a7c6f;
+$sage-light: #6a9e8f;
+$slate: #2d2d3a;
+$warm-bg: #faf8f5;
+$warm-border: #e8e4df;
+$warm-card: #ffffff;
+
+// Legacy color mappings
+$blue: $amber !default;
+$flowers-blue: $amber;
+$red: #d4534b !default;
+$green: $sage !default;
 $yellow: #efcc00 !default;
 $orange: #ffcc22 !default;
-$purple: #f92080 !default;
+$purple: #8b6bb5 !default;
 $dark-blue: #00369f !default;
-$green: #00ab37 !default;
-$dark-green: #009f06 !default;
+$dark-green: #3a7a5e !default;
 $light-pink: #ffdddd !default;
 $light-green: #ddffdd !default;
-$dark-gray: #333 !default;
-$mid-gray: #777 !default;
-$light-gray: #ccc !default;
+$dark-gray: $slate !default;
+$mid-gray: #6b6b80 !default;
+$light-gray: #b5b5c0 !default;
 $lighter-gray: #eee !default;
 $darken-1: rgba(#000,.0625) !default;
 $darken-2: rgba(#000,.125) !default;
@@ -56,8 +64,8 @@ $darken-3: rgba(#000,.25) !default;
 $darken-4: rgba(#000,.5) !default;
 
 // Links
-$link-color: $blue;
-$link-hover-color: darken($blue, 40%);
+$link-color: $amber;
+$link-hover-color: $amber-dark;
 
 // Breakpoints
 $breakpoint-md: '(min-width: 52em)';
@@ -84,55 +92,49 @@ $form-field-padding-y: .5rem !default;
 $form-field-padding-x: .5rem !default;
 
 // Borders
-$border-color: $light-gray !default;
+$border-color: $warm-border !default;
 $border-width: 1px !default;
-$border-radius: 3px !default;
-
-// Forms
-$form-field-font-size: 1rem;
-$form-field-height: 2.25rem;
-$form-field-padding-y: .5rem;
-$form-field-padding-x: .5rem;
+$border-radius: 6px !default;
 
 // Code
-$pre-border-radius: 0;
-$pre-background-color: #fafafa;
-$hljs-comment: $mid-gray;
-$hljs-keyword: $dark-blue;
-$hljs-name: $dark-gray;
-$hljs-number: $dark-green;
-$hljs-string: $red;
-$hljs-title: $red;
-$hljs-type: $dark-blue;
-$hljs-tag: $dark-blue;
-$hljs-attribute: $dark-green;
-$hljs-regexp: $dark-green;
-$hljs-symbol: $purple;
-$hljs-built-in: $dark-blue;
-$hljs-preprocessor: $mid-gray;
-$hljs-deletion: $light-pink;
-$hljs-addition: $light-green;
-$hljs-change: $dark-blue;
-$hljs-chunk: $light-gray;
+$pre-border-radius: 10px;
+$pre-background-color: #1a1b2e;
+$hljs-comment: #6c7086;
+$hljs-keyword: #89b4fa;
+$hljs-name: #cdd6f4;
+$hljs-number: #a6e3a1;
+$hljs-string: #fab387;
+$hljs-title: #fab387;
+$hljs-type: #89b4fa;
+$hljs-tag: #89b4fa;
+$hljs-attribute: #a6e3a1;
+$hljs-regexp: #a6e3a1;
+$hljs-symbol: #f5c2e7;
+$hljs-built-in: #89b4fa;
+$hljs-preprocessor: #6c7086;
+$hljs-deletion: #f38ba8;
+$hljs-addition: #a6e3a1;
+$hljs-change: #89b4fa;
+$hljs-chunk: #6c7086;
 
 // Header
-$header-border-top: thin solid #f3f3f3;
-$header-color: $dark-gray;
-$header-bg-color: #fafafa;
-$header-font-weight: 300;
+$header-border-top: none;
+$header-color: $slate;
+$header-bg-color: transparent;
+$header-font-weight: 400;
 
 // Nav
 $nav-color: $mid-gray;
-$nav-link-color: #444;
+$nav-link-color: $slate;
 $nav-padding: $space-2;
 $nav-link-padding-x: $space-2;
-$nav-link-border-bottom: 2px solid #444;
-$nav-active-border-bottom: 1px solid $light-gray;
+$nav-link-border-bottom: 2px solid $amber;
+$nav-active-border-bottom: 2px solid $amber;
 
 // Footer
-$footer-border-top: thin solid #f3f3f3;
+$footer-border-top: 1px solid $warm-border;
 $footer-padding: $space-3;
-$footer-color: #7a7a7a;
-$footer-bg-color: #fafafa;
-$footer-font-weight: 300;
-$footer-font-size: .75rem;
+$footer-color: $mid-gray;
+$footer-bg-color: $warm-bg;
+$footer-font-weight: 400;
+$footer-font-size: .85rem;
